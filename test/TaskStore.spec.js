@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useTasksStore } from '../store/tasks'
+import { useTaskStore } from '../store/tasks'
 
 describe('Tasks', () => {
   beforeEach(() => {
@@ -7,7 +7,7 @@ describe('Tasks', () => {
   })
 
   test('Create one task', () => {
-    const taskStore = useTasksStore()
+    const taskStore = useTaskStore()
     taskStore.create('task 1')
     expect(taskStore.tasks.length).toBe(1)
   })

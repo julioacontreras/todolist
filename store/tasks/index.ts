@@ -6,7 +6,7 @@ const state: State = {
   tasks: []
 }
 
-export const useTasksStore = defineStore({
+export const useTaskStore = defineStore({
   id: 'tasks',
   state: () => state,
   actions: {
