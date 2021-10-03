@@ -16,10 +16,10 @@
   color: $color-disable;
 }
 
-.text-primary {
-  color: $primary;
-}
-
 html {
   overflow: auto;
+}
+
+.h-min-96 {
+  min-height: 24rem;
 }
