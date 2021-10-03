@@ -1,0 +1,25 @@
+/* Bulma */
+@import "~bulma/sass/utilities/_all";
+@import "./variables";
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+/* TailwindCSS */
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
+@import 'tailwindcss/utilities';
+
+
+.text-disabled {
+  color: $color-disable;
+}
+
+html {
+  overflow: auto;
+}
+
+.h-min-96 {
+  min-height: 24rem;
+}
