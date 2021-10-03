@@ -33,6 +33,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    'nuxt-purgecss',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/composition-api/module',
     '@pinia/nuxt'
@@ -48,26 +49,9 @@ export default {
   build: {
     extractCSS: true,
     postcss: {
-      plugins:
-      process.env.NODE_ENV === 'production'
-        ? [
-            'postcss-flexbugs-fixes',
-            [
-              'postcss-preset-env',
-              {
-                autoprefixer: {
-                  flexbox: 'no-2009'
-                },
-                stage: 3,
-                features: {
-                  'custom-properties': false
-                }
-              }
-            ]
-          ]
-        : [
-          // No transformations in development
-          ]
+      plugins: {
+        'postcss-custom-properties': false
+      }
     }
   },
 
@@ -82,6 +66,25 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/scss/main'
-  ]
+  ],
+
+  purgeCSS: {
+    enabled: ({ isDev, isClient }) => (!isDev && isClient), // or `false` when in dev/debug mode
+    paths: [
+      'assets/**/*.scss',
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js'
+    ],
+    styleExtensions: ['.css'],
+    whitelist: ['body', 'html', 'nuxt-progress'],
+    extractors: [
+      {
+        extractor: content => content.match(/[A-z0-9-:\\/]+/g) || [],
+        extensions: ['html', 'vue', 'js', 'ts']
+      }
+    ]
+  }
 
 }
