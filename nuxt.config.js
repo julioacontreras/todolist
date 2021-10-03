@@ -68,6 +68,10 @@ export default {
     '~/assets/scss/main'
   ],
 
+  router: {
+    base: process.env.NODE_ENV === 'production' ? '/todolist-demo/' : '/'
+  },
+
   purgeCSS: {
     enabled: ({ isDev, isClient }) => (!isDev && isClient), // or `false` when in dev/debug mode
     paths: [
