@@ -1,16 +1,16 @@
+/* Bulma */
+@import "~bulma/sass/utilities/_all";
+@import "./variables";
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+/* TailwindCSS */
 /* purgecss start ignore */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
 
-// Import Bulma's core
-@import "~bulma/sass/utilities/_all";
-
-@import "./variables";
-
-// Import Bulma and Buefy styles
-@import "~bulma";
 
 .text-disabled {
   color: $color-disable;
