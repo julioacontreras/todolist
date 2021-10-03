@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { TaskType } from '../../types/TaskType'
 import { State } from './state'
+import { storeTasks, loadTasks } from './localStorage'
 
 const state: State = {
   tasks: []
@@ -14,17 +15,20 @@ export const useTaskStore = defineStore({
       while (this.tasks.length > 0) {
         this.tasks.pop()
       }
+      storeTasks(this.tasks)
     },
     checkAll (checked: boolean): void {
       this.tasks.forEach((task) => {
         task.checked = checked
       })
+      storeTasks(this.tasks)
     },
     check (taskId: number, checked: boolean): void {
       const task = this.findTaskById(taskId)
       if (task) {
         task.checked = checked
       }
+      storeTasks(this.tasks)
     },
     findTaskById (taskId: number): TaskType | null {
       return this.tasks.find(task => task.id === taskId) as TaskType | null
@@ -34,6 +38,7 @@ export const useTaskStore = defineStore({
       if (index >= 0) {
         this.tasks.splice(index, 1)
       }
+      storeTasks(this.tasks)
     },
     create (label: string): void {
       const id = this.tasks.length + 1
@@ -43,6 +48,10 @@ export const useTaskStore = defineStore({
         label,
         checked: false
       })
+      storeTasks(this.tasks)
+    },
+    load () {
+      this.tasks = loadTasks()
     }
   },
   getters: {
