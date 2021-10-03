@@ -3,6 +3,7 @@
     <b-field class="px-3">
       <b-input
         v-model="nameTask"
+        role="input-task"
         placeholder="Digite su nueva tarea"
         type="text"
         icon="check-circle"

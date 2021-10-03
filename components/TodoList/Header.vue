@@ -1,17 +1,17 @@
 <template>
   <div class="group pl-4 pt-2 pb-2 flex items-center">
     <div class="w-12">
-      <div class="opacity-0 group-hover:opacity-100" @click="checkAllTasks">
+      <div class="opacity-0 group-hover:opacity-100" role="check-all-tasks" @click="checkAllTasks">
         <check :checked="checked" />
       </div>
     </div>
     <div class="flex flex-col flex-grow">
       <p class="w-full flex text-base text-primary justify-center font-semibold uppercase">
-        Listado de tareas - {{ status }}
+        Listado de tareas - <span role="status">{{ status }}</span>
       </p>
     </div>
     <div class="w-12 flex justify-end pr-3">
-      <div class="opacity-0 group-hover:opacity-100" @click="removeAllTasks">
+      <div class="opacity-0 group-hover:opacity-100" role="remove-all-tasks" @click="removeAllTasks">
         <close />
       </div>
     </div>

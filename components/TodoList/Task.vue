@@ -2,6 +2,7 @@
   <div class="group pl-4 pt-2 pb-2 flex items-center">
     <div
       class="w-12"
+      role="check-task"
       @click="checkTask(id, !checked)"
     >
       <check :checked="checked" />
@@ -17,7 +18,7 @@
       </p>
     </div>
     <div class="w-12 flex justify-end">
-      <div class="opacity-0 group-hover:opacity-100" @click="removeTask(id)">
+      <div class="opacity-0 group-hover:opacity-100" role="remove-task" @click="removeTask(id)">
         <close />
       </div>
     </div>
