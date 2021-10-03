@@ -38,6 +38,7 @@ export default defineComponent({
   },
   setup () {
     const taskStore = useTaskStore()
+    taskStore.load()
     const nameTask = ref('')
 
     const createTask = () => {
