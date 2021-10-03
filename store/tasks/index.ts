@@ -46,8 +46,10 @@ export const useTaskStore = defineStore({
     }
   },
   getters: {
-    getTasks (): Array<TaskType> {
-      return this.tasks
+    status (): string {
+      const resultCheckeds = this.tasks.filter(task => task.checked === true)
+      const total = this.tasks.length
+      return `${resultCheckeds.length}/${total}`
     }
   }
 })
